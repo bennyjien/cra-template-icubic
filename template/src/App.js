@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomePage from './pages/home.page';
+import logo from './assets/images/logo-react.svg';
+import './styles/App.scss';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+				<div className="App-header-inner">
+					<img src={logo} className="logo" alt="React Logo" />
+				</div>
       </header>
+			<main className="App-main">
+				<div className="App-main-inner">
+					<HomePage />
+				</div>
+			</main>
+			<footer className="App-footer">
+				<div className="App-footer-inner">
+					<p><small>Copyright &copy; {new Date().getFullYear()}. Design and code by <a href="//icubic.co.id">ICUBIC</a></small>.</p>
+				</div>
+			</footer>
     </div>
   );
 }

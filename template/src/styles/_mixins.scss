@@ -1,0 +1,565 @@
+// HELPERS
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+// BREAKPOINTS
+@mixin breakpoint($zombie) {
+	@if $zombie == creeper {
+		@media screen and (min-width: $width-creeper) { @content; }
+	}
+	@else if $zombie == crawler {
+		@media screen and (min-width: $width-crawler) { @content; }
+	}
+	@else if $zombie == walker {
+		@media screen and (min-width: $width-walker) { @content; }
+	}
+	@else if $zombie == runner {
+		@media screen and (min-width: $width-runner) { @content; }
+	}
+	@else if $zombie == jumper {
+		@media screen and (min-width: $width-jumper) { @content; }
+	}
+	@else if $zombie == flyer {
+		@media screen and (min-width: $width-flyer) { @content; }
+	}
+	@else if $zombie == teleporter {
+		@media screen and (min-width: $width-teleporter) { @content; }
+	}
+	@else if $zombie == demigod {
+		@media screen and (min-width: $width-demigod) { @content; }
+	}
+	@else if $zombie == god {
+		@media screen and (min-width: $width-god) { @content; }
+	}
+	@else if $zombie == origin-walker {
+		@media screen and (max-width: #{$width-walker - 1}) { @content; }
+	}
+	@else if $zombie == walker-runner {
+		@media screen and (min-width: $width-walker) and (max-width: #{$width-runner - 1}) { @content; }
+	}
+	@else if $zombie == watcher {
+		@media screen and (-o-min-device-pixel-ratio: 1.5),
+			screen and (-webkit-min-device-pixel-ratio: 1.5),
+			screen and (min-resolution: 144dpi) { @content; }
+	}
+}
+
+// TYPOGRAPHY
+@mixin font-fluid($min-vw, $max-vw, $min-value, $max-value) {
+	font-size: $min-value;
+
+	@media screen and (min-width: $min-vw) {
+		font-size: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+	}
+
+	@media screen and (min-width: $max-vw) {
+		font-size: $max-value;
+	}
+}
+
+@mixin font-size-100 {
+	font-size: $font-size-100;
+	line-height: $line-height-100;
+}
+
+@mixin font-size-200 {
+	font-size: $font-size-200;
+	line-height: $line-height-200;
+}
+
+@mixin font-size-300 {
+	font-size: $font-size-300;
+	line-height: $line-height-300;
+}
+
+@mixin font-size-400 {
+	font-size: $font-size-400;
+	line-height: $line-height-400;
+}
+
+@mixin font-size-500 {
+	font-size: $font-size-500;
+	line-height: $line-height-500;
+}
+
+@mixin font-size-600 {
+	font-size: $font-size-600;
+	line-height: $line-height-600;
+}
+
+@mixin font-size-700 {
+	font-size: $font-size-700;
+	line-height: $line-height-700;
+}
+
+@mixin font-size-800 {
+	font-size: $font-size-800;
+	line-height: $line-height-800;
+}
+
+@mixin font-size-900 {
+	font-size: $font-size-900;
+	line-height: $line-height-900;
+}
+
+@mixin font-size-1000 {
+	font-size: $font-size-1000;
+	line-height: $line-height-1000;
+}
+
+@mixin font-size-1100 {
+	font-size: $font-size-1100;
+	line-height: $line-height-1100;
+}
+
+@mixin font-size-1200 {
+	font-size: $font-size-1200;
+	line-height: $line-height-1200;
+}
+
+@mixin font-style-h1 {
+	font-size: $font-size-900;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	line-height: $line-height-900;
+}
+
+@mixin font-style-h2 {
+	font-size: $font-size-800;
+	font-weight: 700;
+	line-height: $line-height-800;
+}
+
+@mixin font-style-h3 {
+	font-size: $font-size-700;
+	font-weight: 700;
+	line-height: $line-height-700;
+}
+
+@mixin font-style-h4 {
+	font-size: $font-size-600;
+	font-weight: 700;
+	line-height: $line-height-600;
+}
+
+@mixin font-style-h5 {
+	font-size: $font-size-500;
+	font-weight: 700;
+	line-height: $line-height-500;
+}
+
+@mixin font-style-h6 {
+	font-size: $font-size-400;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: $line-height-400;
+	text-transform: uppercase;
+}
+
+@mixin font-style-body {
+	font-size: $font-size-500;
+	line-height: $line-height-500;
+}
+
+@mixin font-style-callout {
+	font-size: $font-size-400;
+	line-height: $line-height-400;
+}
+
+@mixin font-style-footnote {
+	font-size: $font-size-300;
+	line-height: $line-height-300;
+}
+
+@mixin font-style-caption {
+	font-size: $font-size-200;
+	line-height: $line-height-200;
+}
+
+@mixin font-style-ant {
+	font-size: $font-size-100;
+	line-height: $line-height-100;
+}
+
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin hyphenate {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	//hyphens: auto;
+}
+
+@mixin flatlist {
+
+	ol,
+	ul {
+		list-style: none;
+		padding-left: 24px;
+		text-indent: -24px;
+
+		li {
+
+			&:before {
+				content: "\2022";
+				display: inline-block;
+				min-width: 24px;
+				text-indent: 0;
+				padding-right: 4px;
+			}
+		}
+	}
+
+	ol {
+
+		li {
+			counter-increment: list-ordered;
+
+			&:before {
+				content: counter(list-ordered) ". ";
+				text-indent: 0;
+			}
+		}
+	}
+}
+
+// BUTTON
+@mixin button($style: solid) {
+	border: 1px solid transparent;
+	border-radius: 0;
+	display: inline-block;
+	font-weight: 700;
+	text-align: center;
+	transition: all 0.2s ease-out;
+	vertical-align: middle;
+	white-space: nowrap;
+
+	&:hover,
+	&:focus {
+		outline: 0;
+		text-decoration: none;
+	}
+
+	@if $style == solid {
+		background-color: $color-one-500;
+		color: $white;
+		padding: 11px 24px;
+
+		&:visited {
+			color: $white;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $color-one-600;
+		}
+	}
+
+	@if $style == line {
+		border-color: $color-one-500;
+		color: $color-one-500;
+		padding: 11px 24px;
+
+		&:visited {
+			color: $color-one-500;
+		}
+
+		&:hover,
+		&:focus {
+			border-color: $color-one-600;
+			color: $color-one-600;
+		}
+	}
+
+	@if $style == link {
+		color: $color-text;
+		padding: 11px 0;
+
+		&:visited {
+			color: $color-text;
+		}
+
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+	@if $style == gray {
+		background-color: $color-500;
+		color: $white;
+		padding: 11px 24px;
+
+		&:visited {
+			color: $white;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $color-600;
+			color: $white;
+		}
+	}
+
+	@if $style == disabled {
+		background-color: $color-400;
+		color: $white;
+		padding: 11px 24px;
+		pointer-events: none;
+
+		&:visited {
+			color: $white;
+		}
+	}
+}
+
+// LAYOUT
+@mixin ratio($wph: 1/1) {
+
+	&:before {
+		content: '';
+		display: inline-block;
+		padding-bottom: 100% / $wph;
+	}
+}
+
+@mixin whitespace($multiplier: 1) {
+	$length: length($multiplier);
+	$multiplier-top: $multiplier;
+	$multiplier-right: $multiplier;
+	$multiplier-bottom: $multiplier;
+	$multiplier-left: $multiplier;
+
+	@if $length == 2 {
+		$multiplier-top: nth($multiplier, 1);
+		$multiplier-right: nth($multiplier, 2);
+		$multiplier-bottom: nth($multiplier, 1);
+		$multiplier-left: nth($multiplier, 2);
+	}
+	@else if $length == 3 {
+		$multiplier-top: nth($multiplier, 1);
+		$multiplier-right: nth($multiplier, 2);
+		$multiplier-bottom: nth($multiplier, 3);
+		$multiplier-left: nth($multiplier, 2);
+	}
+	@else if $length == 4 {
+		$multiplier-top: nth($multiplier, 1);
+		$multiplier-right: nth($multiplier, 2);
+		$multiplier-bottom: nth($multiplier, 3);
+		$multiplier-left: nth($multiplier, 4);
+	}
+
+	margin: #{$multiplier-top * $padding-origin} #{$multiplier-right * $padding-origin} #{$multiplier-bottom * $padding-origin} #{$multiplier-left * $padding-origin};
+
+	@include breakpoint(creeper) {
+		margin: #{$multiplier-top * $padding-creeper} #{$multiplier-right * $padding-creeper} #{$multiplier-bottom * $padding-creeper} #{$multiplier-left * $padding-creeper};
+	}
+
+	@include breakpoint(crawler) {
+		margin: #{$multiplier-top * $padding-crawler} #{$multiplier-right * $padding-crawler} #{$multiplier-bottom * $padding-crawler} #{$multiplier-left * $padding-crawler};
+	}
+
+	@include breakpoint(walker) {
+		margin: #{$multiplier-top * $padding-walker} #{$multiplier-right * $padding-walker} #{$multiplier-bottom * $padding-walker} #{$multiplier-left * $padding-walker};
+	}
+
+	@include breakpoint(flyer) {
+		margin: #{$multiplier-top * $padding-flyer} #{$multiplier-right * $padding-flyer} #{$multiplier-bottom * $padding-flyer} #{$multiplier-left * $padding-flyer};
+	}
+}
+
+@mixin wrapper-xy($width: $width-max, $padding: 1, $align: center) {
+	$length: length($padding);
+	$multiplier-top: $padding;
+	$multiplier-right: $padding;
+	$multiplier-bottom: $padding;
+	$multiplier-left: $padding;
+
+	@if $length == 2 {
+		$multiplier-top: nth($padding, 1);
+		$multiplier-right: nth($padding, 2);
+		$multiplier-bottom: nth($padding, 1);
+		$multiplier-left: nth($padding, 2);
+	}
+	@else if $length == 3 {
+		$multiplier-top: nth($padding, 1);
+		$multiplier-right: nth($padding, 2);
+		$multiplier-bottom: nth($padding, 3);
+		$multiplier-left: nth($padding, 2);
+	}
+	@else if $length == 4 {
+		$multiplier-top: nth($padding, 1);
+		$multiplier-right: nth($padding, 2);
+		$multiplier-bottom: nth($padding, 3);
+		$multiplier-left: nth($padding, 4);
+	}
+
+	@if $align == center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@if $align == right {
+		margin-left: auto;
+	}
+
+	max-width: $width;
+
+	padding: #{$multiplier-top * $padding-origin} #{$multiplier-right * $padding-origin} #{$multiplier-bottom * $padding-origin} #{$multiplier-left * $padding-origin};
+
+	@include breakpoint(creeper) {
+		padding: #{$multiplier-top * $padding-creeper} #{$multiplier-right * $padding-creeper} #{$multiplier-bottom * $padding-creeper} #{$multiplier-left * $padding-creeper};
+	}
+
+	@include breakpoint(crawler) {
+		padding: #{$multiplier-top * $padding-crawler} #{$multiplier-right * $padding-crawler} #{$multiplier-bottom * $padding-crawler} #{$multiplier-left * $padding-crawler};
+	}
+
+	@include breakpoint(walker) {
+		padding: #{$multiplier-top * $padding-walker} #{$multiplier-right * $padding-walker} #{$multiplier-bottom * $padding-walker} #{$multiplier-left * $padding-walker};
+	}
+
+	@include breakpoint(flyer) {
+		padding: #{$multiplier-top * $padding-flyer} #{$multiplier-right * $padding-flyer} #{$multiplier-bottom * $padding-flyer} #{$multiplier-left * $padding-flyer};
+	}
+}
+
+// on child, use `grid-column: wrapper || full`
+@mixin wrapper-grid($width: $width-max, $padding: 0 1) {
+	$length: length($padding);
+	$multiplier-y: $padding;
+	$multiplier-x: $padding;
+
+	@if $length == 2 {
+		$multiplier-y: nth($padding, 1);
+		$multiplier-x: nth($padding, 2);
+	}
+
+	display: grid;
+	grid-auto-rows: min-content;
+	grid-template-columns: [full-start] minmax(#{$padding-origin * $multiplier-x}, 1fr) [wrapper-start] 0 [main-start] minmax(#{$padding-origin * $multiplier-x}, #{$width-max - $width-side - ($padding-origin * $multiplier-x * 3)}) [main-end] #{$padding-origin * $multiplier-x} [side-start] minmax(#{$padding-origin * $multiplier-x}, $width-side) [side-end] 0 [wrapper-end] minmax(#{$padding-origin * $multiplier-x}, 1fr) [full-end];
+	padding-bottom: $padding-origin * $multiplier-y;
+	padding-top: $padding-origin * $multiplier-y;
+
+	@include breakpoint(creeper) {
+		grid-template-columns: [full-start] minmax(#{$padding-creeper * $multiplier-x}, 1fr) [wrapper-start] 0 [main-start] minmax(#{$padding-creeper * $multiplier-x}, #{$width-max - $width-side - ($padding-creeper * $multiplier-x * 3)}) [main-end] #{$padding-creeper * $multiplier-x} [side-start] minmax(#{$padding-creeper * $multiplier-x}, $width-side) [side-end] 0 [wrapper-end] minmax(#{$padding-creeper * $multiplier-x}, 1fr) [full-end];
+		padding-bottom: $padding-creeper * $multiplier-y;
+		padding-top: $padding-creeper * $multiplier-y;
+	}
+
+	@include breakpoint(crawler) {
+		grid-template-columns: [full-start] minmax(#{$padding-crawler * $multiplier-x}, 1fr) [wrapper-start] 0 [main-start] minmax(#{$padding-crawler * $multiplier-x}, #{$width-max - $width-side - ($padding-crawler * $multiplier-x * 3)}) [main-end] #{$padding-crawler * $multiplier-x} [side-start] minmax(#{$padding-crawler * $multiplier-x}, $width-side) [side-end] 0 [wrapper-end] minmax(#{$padding-crawler * $multiplier-x}, 1fr) [full-end];
+		padding-bottom: $padding-crawler * $multiplier-y;
+		padding-top: $padding-crawler * $multiplier-y;
+	}
+
+	@include breakpoint(walker) {
+		grid-template-columns: [full-start] minmax(#{$padding-walker * $multiplier-x}, 1fr) [wrapper-start] 0 [main-start] minmax(#{$padding-walker * $multiplier-x}, #{$width-max - $width-side - ($padding-walker * $multiplier-x * 3)}) [main-end] #{$padding-walker * $multiplier-x} [side-start] minmax(#{$padding-walker * $multiplier-x}, $width-side) [side-end] 0 [wrapper-end] minmax(#{$padding-walker * $multiplier-x}, 1fr) [full-end];
+		padding-bottom: $padding-walker * $multiplier-y;
+		padding-top: $padding-walker * $multiplier-y;
+	}
+
+	@include breakpoint(flyer) {
+		grid-template-columns: [full-start] minmax(#{$padding-flyer * $multiplier-x}, 1fr) [wrapper-start] 0 [main-start] minmax(#{$padding-flyer * $multiplier-x}, #{$width-max - $width-side - ($padding-flyer * $multiplier-x * 3)}) [main-end] #{$padding-flyer * $multiplier-x} [side-start] minmax(#{$padding-flyer * $multiplier-x}, $width-side) [side-end] 0 [wrapper-end] minmax(#{$padding-flyer * $multiplier-x}, 1fr) [full-end];
+		padding-bottom: $padding-flyer * $multiplier-y;
+		padding-top: $padding-flyer * $multiplier-y;
+	}
+}
+
+@mixin clearfix {
+
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin hidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+@mixin visible {
+	display: block !important;
+	height: auto !important;
+	opacity: 1 !important;
+	overflow: visible !important;
+	visibility: visible !important;
+}
+
+@mixin spacers($margin, $item: 0) {
+	$length: length($margin);
+	$vertical: nth($margin, 1) / 2;
+	$horizontal: $vertical / 2;
+
+	margin: -1%;
+
+	@if $length == 1 {
+		margin: calc(#{$vertical} * -1);
+	}
+
+	@else if $length == 2 {
+		$horizontal: nth($margin, 2);
+		margin: calc(#{$vertical} * -1) calc(#{$horizontal} * -1);
+	}
+
+	> * {
+		margin: 1%;
+
+		@if $length == 1 {
+			margin: calc(#{$vertical});
+
+			@if $item == 0 {
+				width: auto;
+			}
+
+			@if $item != 0 {
+				width: #{(100% - (2% * $item)) / $item};
+				width: calc((100% - #{2 * $item * $vertical}) / #{$item});
+			}
+		}
+
+		@else if $length == 2 {
+			$horizontal: nth($margin, 2);
+			margin: calc(#{$vertical}) calc(#{$horizontal});
+
+			@if $item == 0 {
+				width: auto;
+			}
+
+			@if $item != 0 {
+				width: #{(100% - (2% * $item)) / $item};
+				width: calc((100% - #{2 * $item * $horizontal}) / #{$item});
+			}
+		}
+	}
+}
+
+@mixin flex-flow($breakpoint, $width, $margin) {
+	display: flex;
+	flex-wrap: wrap;
+	margin: calc(#{$margin} * -1);
+
+	> * {
+		flex-basis: calc(calc(#{$breakpoint} - 100%) * 999);
+		flex-grow: 1;
+		margin: $margin;
+		max-width: 100%;
+		min-width: calc(#{$width} - (#{$margin} * 2));
+	}
+}

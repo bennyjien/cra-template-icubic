@@ -1,0 +1,29 @@
+{
+  "name": "cra-template-icubic",
+	"description": "ICUBIC base template for Create React App.",
+	"version": "0.1.0",
+	"author": "Benny Jien <b.jien@icubic.co.id>",
+	"license": "MIT",
+	"keywords": [
+    "react",
+		"create-react-app",
+		"cra-template",
+    "template"
+  ],
+	"main": "template.json",
+	"files": [
+    "template",
+    "template.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bennyjien/cra-template-icubic",
+    "directory": "/"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "bugs": {
+    "url": "https://github.com/bennyjien/cra-template-icubic/issues"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "cra-template-icubic",
   "description": "ICUBIC base template for Create React App.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Benny Jien <b.jien@icubic.co.id>",
   "license": "MIT",
   "keywords": [

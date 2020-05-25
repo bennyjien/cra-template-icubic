@@ -9,7 +9,7 @@
 @import "./global";
 @import "./modifier";
 
-.App {
+.app {
 	background-color: $white;
 	display: flex;
 	flex-direction: column;
@@ -17,7 +17,7 @@
 	position: relative;
 }
 
-.App-header {
+.app-header {
 	position: relative;
 	width: 100%;
 	z-index: 8;
@@ -32,7 +32,7 @@
 	}
 }
 
-.App-main {
+.app-main {
 	flex: 1 1 auto;
 	position: relative;
 
@@ -43,7 +43,7 @@
 	}
 }
 
-.App-footer {
+.app-footer {
 	background-color: $color-bg-dark;
 	color: $white;
 	position: relative;

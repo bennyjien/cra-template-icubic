@@ -21,13 +21,21 @@
 }
 
 .icon {
+	display: inline-block;
 	fill: currentColor;
 	height: 1em;
 	width: 1em;
+	vertical-align: middle;
 
 	&.icon-inline {
 		position: relative;
-		top: -2px;
+		top: -0.125em;
+	}
+
+	.svg {
+		display: block;
+		height: 100%;
+		width: 100%;
 	}
 }
 
@@ -79,6 +87,8 @@
 
 .table {
 	background-color: $white;
+	border-collapse: collapse;
+	border-spacing: 0;
 	border-style: hidden;
 	box-shadow: 0 0 0 1px $color-border;
 	margin: 1px 1px 24px;

@@ -1,9 +1,8 @@
 import React from 'react';
-import HomePage from './pages/home.page';
 import logo from './assets/images/logo-react.svg';
 import './styles/app.scss';
 
-const App = () => {
+const App = ({ children }) => {
   return (
     <div className="app">
       <header className="app-header">
@@ -12,9 +11,7 @@ const App = () => {
 				</div>
       </header>
 			<main className="app-main">
-				<div className="app-main-inner">
-					<HomePage />
-				</div>
+				<div className="app-main-inner">{children}</div>
 			</main>
 			<footer className="app-footer">
 				<div className="app-footer-inner">

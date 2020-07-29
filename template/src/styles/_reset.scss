@@ -126,12 +126,12 @@ h6 {
 }
 
 a {
-	color: $color-blue-500;
+	color: $color-one-500;
 	text-decoration: none;
 
 	&:hover,
 	&:focus {
-		color: $color-blue-600;
+		color: $color-one-600;
 		outline: 0;
 	}
 }
@@ -320,7 +320,7 @@ textarea {
 	vertical-align: middle;
 
 	&:focus {
-		border-color: $color-blue-500;
+		border-color: $color-one-500;
 		box-shadow: none;
 		outline: 0;
 	}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from './components/scrollToTop.component';
+import Home from './pages/home.page';
 import NotFound from './pages/notFound.page';
 
 const Router = () => (

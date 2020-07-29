@@ -23,7 +23,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	background-color: $color-bg;
 	color: $color-text;
-	font-family: $monospace;
+	font-family: $sans-serif;
 	height: 100%;
 }
 
@@ -57,8 +57,14 @@ img {
 	vertical-align: middle;
 }
 
-ol, ul, dl,
-p, address, blockquote, figure, pre {
+ol,
+ul,
+dl,
+p,
+address,
+blockquote,
+figure,
+pre {
 	margin: 0 0 24px;
 
 	&:last-child {
@@ -120,12 +126,12 @@ h6 {
 }
 
 a {
-	color: $color-one-500;
+	color: $color-blue-500;
 	text-decoration: none;
 
 	&:hover,
 	&:focus {
-		color: $color-one-600;
+		color: $color-blue-600;
 		outline: 0;
 	}
 }
@@ -261,6 +267,18 @@ legend {
 	padding: 0;
 }
 
+button,
+input,
+optgroup,
+select,
+textarea {
+	@include font-size-500;
+}
+
+button {
+	cursor: pointer;
+}
+
 input[type="search"] {
 	box-sizing: border-box;
 }
@@ -270,7 +288,7 @@ input[type="radio"] {
 	cursor: pointer;
 	vertical-align: baseline;
 
-	+ label {
+	+label {
 		cursor: pointer;
 		vertical-align: baseline;
 	}
@@ -292,8 +310,8 @@ input[type="url"],
 select,
 textarea {
 	appearance: none;
-	border: 1px solid $color-text;
-	border-radius: 0;
+	border: 1px solid $color-border-dark;
+	border-radius: 6px;
 	box-shadow: none;
 	line-height: inherit;
 	max-width: 100%;
@@ -302,16 +320,10 @@ textarea {
 	vertical-align: middle;
 
 	&:focus {
-		border-color: $color-one-500;
+		border-color: $color-blue-500;
 		box-shadow: none;
 		outline: 0;
 	}
-}
-
-textarea {
-	height: 128px;
-	resize: none;
-	transition: none;
 }
 
 select {
@@ -321,6 +333,7 @@ select {
 	background-position: calc(100% - 4px) center;
 	background-repeat: no-repeat;
 	padding: 7px 28px 7px 8px;
+
 	&[multiple],
 	&[size] {
 		background-image: none;
@@ -336,7 +349,17 @@ select {
 		cursor: default;
 	}
 
+	&:invalid {
+		color: $color-text-lighter;
+	}
+
 	&::-ms-expand {
 		display: none;
 	}
+}
+
+textarea {
+	height: 80px;
+	resize: none;
+	transition: none;
 }
